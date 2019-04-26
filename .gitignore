@@ -1,0 +1,12 @@
+__ignore/
+.vscode/
+
+debug
+debug.test
+*.exe
+*.dll
+*.lnk
+
+akashic.*
+*.akashic
+*.svg

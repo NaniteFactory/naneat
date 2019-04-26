@@ -1,0 +1,144 @@
+// MIT License
+//
+// Copyright (c) 2019 문동선 (NaniteFactory)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// -------------------------------------------------
+// meta
+
+// {type:class}
+// {direction:topDown}
+// {generate:true}
+
+// -------------------------------------------------
+// title
+
+[note: Overview{bg:cornsilk}]
+
+// -------------------------------------------------
+// head
+
+// facade
+[Experimenter|+Run();+Shutdown();+IsPumping();+RegisterMeasurer(agent);+UnregisterMeasurer(agent)|+Self()*Universe;+Status()UniverseStatusGetter|//Facade-of-this-library]-[note: NEAT server.{bg:cornsilk}]
+[Measurer]-[note: Interface open to communicate with others outside the package.;Suggested methods: IPC, Network-over(Socket), Threads, etc.]
+[UniverseStatusGetter]
+[note: A port to the other client it could be.{bg:cornsilk}]-[Agent|//Pre-implemented-Measurer]
+[note: NEAT server.{bg:cornsilk}]-[note: A port to the other client it could be.{bg:cornsilk}]
+
+// world
+[Configuration|//Hyper-parameters]
+[Universe|RuntimeStat;Mutexes|//NEAT-context]
+[Species|+Champion()*Organism;+Sort()|//Classes;//Crossoverer;//Group;//Team]-[note: Sort by oldest in Universe]
+[note: Collection unlinear in Universe]-[Organism|Genotype;Phenotype;Breed;Fitness;IsMeasured|//Livings;//ToBeMeasured]
+[Organism]-[note: Sort by fittest in Species]
+[Innovation]
+[Niche]
+
+// genetics
+[Genome|Chromes|//Genotype;//Factory-of-Organism]
+[Chromosome|LinkGenes;NodeGenes;DiceGene|//Factory-of-NN]
+[note: Shared globally. (throughout the Universe) No and not unique in a Chromosome.]-[NodeGene|UUID;Name:string;Type:enum;Idx:int|//InputNode-or-OutputNode]
+[LinkGene|Innov;From;To;Enabled;Weight|//HiddenNode-inferable]
+[ChanceGene|PrimitiveVals|//DiceGene]
+
+// neuro
+[NeuralNetwork|+Evaluate(argIn)retOut|//Phenome;//Phenotype]
+[NeuralNode|Identifier:int64;Value:NeuralValue;LayerLevel:int;IsValidBackward:bool;IsValidForward:bool|+Evaluate(argIn)retOut;+IsValid()bool|//Memoized-stuff-of-NN]
+[NeuralEdge]
+[note: Singleton;(Static-entity)]-[Activation|//Sigmoid or ReLU ... Rectifier-like Ramp]
+[NeuralValue|//NeuralInput;//NeuralOutput]
+
+// ark
+[Ark]-[note: Universe in a composite. This type is used to store the Universe in JSON where all original references are always lost. The listed components here all are abstact concepts, not classes strictly defined - to help one understand the design.]
+[Universe_|Configuration;Generation;Innovation;TopFitness]
+[Species_|Stangnancy;TopFitness]
+[Organism_|Fitness;IsMeasured]
+[NodeGene_|UUID|//InputNode-or-OutputNode]-[note: Dummy filled with UUID only.]
+[LinkGene_|Innov:Innovation;From;To;Enabled;Weight|//HiddenNode-inferable]
+[ChanceGene_|PrimitiveVals|//DiceGene]
+
+// -------------------------------------------------
+// body
+
+// facade
+[Experimenter]^-.-[Universe]
+[Measurer]^-.-[Agent]
+[Measurer]<->[Experimenter]
+[Measurer]<->[Universe]
+[Universe]-.-^[UniverseStatusGetter]
+[Experimenter]->[UniverseStatusGetter]
+
+// world
+[Universe]+-[Species]
+[Species]<-.->[Organism]
+[Species]<-Group/Ungroup>[Organism]
+[Species]+-+[Organism]
+[Universe]+-[Organism]
+[Organism]<-Creation with Inheritance^[Genome]
+[Organism]++-.->[Genome]
+[Organism]+-[NeuralNetwork]
+[Universe]->[Innovation]
+[Universe]->[Niche]
+[Niche]<-.-++[Species]
+
+// genetics
+[Genome]+-[Chromosome]
+[Chromosome]++Must own-[LinkGene]
+[Chromosome]Distant-Shared>[NodeGene]
+[Chromosome]++-[ChanceGene]
+[Innovation]<-.-++[LinkGene]
+[LinkGene]-.->[NodeGene]
+
+// neuro
+[NeuralNetwork]->[NodeGene]
+[NeuralNetwork]->[LinkGene]
+[NeuralNetwork]<-Create[Chromosome]
+[NeuralNetwork]+->[NeuralNode]
+[NeuralNetwork]+->[NeuralEdge]
+[NeuralEdge]-.->[NeuralNode]
+[NodeGene]^-[NeuralNode]
+[LinkGene]^-[NeuralEdge]
+[NeuralNode]-.->[Activation]
+[Activation]-.->[NeuralValue]
+
+// bridge
+[Universe]++-[Configuration]
+[Universe_]++-[Configuration]
+
+// ark
+[Ark]++-[NodeGeneRefByUUID]
+[MarshaledJSONExport]<-Export[Universe]
+[Ark]Create->[Universe]
+[Ark]<-.-[MarshaledJSONExport]
+[Ark]++-[Universe_]
+[Universe_]++-[Species_]
+[Species_]++-[Organism_]
+[Organism_]++-[Genome_]
+[Genome_]++-[Chromosome_]
+[Chromosome_]++-[LinkGene_]
+[Chromosome_]++-[NodeGene_]
+[Chromosome_]++-[ChanceGene_]
+[NodeGeneRefByUUID]-RestoreRefNode[NodeGene_]
+[NodeGeneRefByUUID]-RestoreRefNode[LinkGene_]
+[LinkGene_]-.->[NodeGene_]
+
+// -------------------------------------------------
+
+[note: 생각해 볼 것: 제1번, 소속이 어디일까? 소속이란 엔티티의 공간적 투영이다. (한 자리 차지하고 있는 곳.) 클래스는 자신의 보금자리가 (지정되어) 있은 이후에야 비로소 다른 것과 관계한다. 궁극적으로 어디엔가 소속이 없는 객체는 존재로서 지속할 수가 없기 때문이다.;그 다음 찾는 것은 해당 객체의 부모다. (정적인 부모든 동적인 부모든.) 그렇게 해서 그것의 생성(시간성)을 이해할 수 있다.;그러니까, 어디에서 만들어져서 어디에 들어가 있는지를 잘 쫓아서 파악하라는 말이다.]
