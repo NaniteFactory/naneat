@@ -75,6 +75,8 @@ github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943 h1:bNuiC3IdQo
 github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943/go.mod h1:IkDQyHH4z6WVCa6XRHZ+9MK/h/IRyZ/2rPOt62XoeDQ=
 github.com/nanitefactory/visual v0.0.0-20200210170335-d48b545c0beb h1:vV+LVlP85Oe3TNr5QjdmCDdzntZEnsCigNLTSbM1Ag8=
 github.com/nanitefactory/visual v0.0.0-20200210170335-d48b545c0beb/go.mod h1:IkDQyHH4z6WVCa6XRHZ+9MK/h/IRyZ/2rPOt62XoeDQ=
+github.com/nanitefactory/visual v0.0.0-20200210175345-b7de9827ce57 h1:ff4IwxYwIARB3TCW9YIRkjQ8hCKrVGZggbgBeQdigeI=
+github.com/nanitefactory/visual v0.0.0-20200210175345-b7de9827ce57/go.mod h1:IdD9ASrml+Qw3GvelYV/l1My0YFsMHMh+3y7prZ27TY=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
