@@ -34,13 +34,11 @@ import (
 	"log"
 	"math"
 	"math/rand"
-	"os"
 	"reflect"
 	"runtime/debug"
 	"sort"
 	"strconv"
 	"sync"
-	"syscall"
 	"time"
 
 	"github.com/campoy/unique"
