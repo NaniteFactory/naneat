@@ -8,6 +8,7 @@ addons:
             - libappindicator1
             - libindicator7
             - libgles2-mesa-dev
+            #
             - xorg-dev
             - libx11-dev
             - libxrandr-dev
@@ -16,6 +17,13 @@ addons:
             - libxi-dev
             - libopenal-dev
             - libasound2-dev
+            - libgl1-mesa-dev
+            #  
+            - libpango1.0-dev
+            - libgtk2.0-dev
+            #
+            - libglib2.0-dev
+            - libgdk-pixbuf2.0-dev
             - libgl1-mesa-dev
 go:
   - 1.13.x
