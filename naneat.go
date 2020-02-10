@@ -44,7 +44,7 @@ import (
 	"time"
 
 	"github.com/campoy/unique"
-	uuid "github.com/satori/go.uuid"
+	"github.com/gofrs/uuid"
 
 	"gonum.org/v1/gonum/graph"
 	"gonum.org/v1/gonum/graph/simple"

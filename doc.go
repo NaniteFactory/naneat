@@ -33,7 +33,7 @@ Notes:
  - Currently most of struct members are public - fields are no reason exported - in this package. Use them at your own risk. (Though, we'd better to use methods to access fields in most cases than to expose them directly.)
  - The nil slices are disallowed in any struct. Constructors may initialize them to empty slices.
  - It is strongly recommended to use constructors (func New~) to create any struct instance rather than just having it with composite literals.
-*/
+ - asdfasdf */
 package naneat
 
 /*

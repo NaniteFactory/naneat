@@ -1,0 +1,35 @@
+dist: bionic
+language: go
+addons:
+    apt:
+        packages:
+            - libxss1
+            - libgconf2-4
+            - libappindicator1
+            - libindicator7
+            - libgles2-mesa-dev
+            - xorg-dev
+            - libx11-dev
+            - libxrandr-dev
+            - libxinerama-dev
+            - libxcursor-dev
+            - libxi-dev
+            - libopenal-dev
+            - libasound2-dev
+            - libgl1-mesa-dev
+go:
+  - 1.13.x
+  - 1.12.x
+  - tip
+# env:
+#   - GO111MODULE=off
+# services:
+#   - docker
+before_install:
+  - cd $HOME
+  - mv $GOPATH/src/github.com/NaniteFactory $GOPATH/src/github.com/nanitefactory # lowercase 
+  - cd $GOPATH/src/github.com/nanitefactory/naneat
+install:
+  - go get -t -v ./...
+script:
+  - go test -v -headless
