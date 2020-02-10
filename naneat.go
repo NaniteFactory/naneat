@@ -56,8 +56,8 @@ import (
 
 // Initialization of this package.
 func init() {
-	syscall.Write(syscall.Handle(os.Stdout.Fd()), nil) // The standard out is flushed.
-	rand.Seed(time.Now().UTC().UnixNano())             // Seed for random mutations etc.
+	fmt.Println()                          // The standard out is flushed.
+	rand.Seed(time.Now().UTC().UnixNano()) // Seed for random mutations etc.
 }
 
 // ----------------------------------------------------------------------------
