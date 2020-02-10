@@ -3,6 +3,7 @@ module github.com/nanitefactory/naneat
 go 1.13
 
 require (
+	github.com/TheTitanrain/w32 v0.0.0-20200114052255-2654d97dbd3d // indirect
 	github.com/campoy/unique v0.0.0-20180121183637-88950e537e7e
 	github.com/faiface/beep v1.0.2 // indirect
 	github.com/faiface/glhf v0.0.0-20181018222622-82a6317ac380 // indirect
@@ -15,12 +16,16 @@ require (
 	github.com/gofrs/uuid v3.2.0+incompatible
 	github.com/gosuri/uitable v0.0.4
 	github.com/gotk3/gotk3 v0.0.0-20200129211157-69caac910e50 // indirect
+	github.com/hajimehoshi/oto v0.5.4 // indirect
+	github.com/jfreymuth/oggvorbis v1.0.1 // indirect
 	github.com/mattn/go-runewidth v0.0.8 // indirect
 	github.com/nanitefactory/bindat v0.0.0-20190406111749-b480cdb7ccef // indirect
-	github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943
+	github.com/nanitefactory/visual v0.0.0-20200210170335-d48b545c0beb
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sqweek/dialog v0.0.0-20190728103509-6254ed5b0d3c
+	golang.org/x/exp v0.0.0-20200207192155-f17229e696bd // indirect
 	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
+	golang.org/x/mobile v0.0.0-20200205170228-0df4eb238546 // indirect
 	golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5 // indirect
 	gonum.org/v1/gonum v0.6.2
 )
