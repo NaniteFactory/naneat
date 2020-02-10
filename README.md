@@ -1,6 +1,7 @@
 # NaNEAT?
 
 [![GoDoc](https://godoc.org/github.com/nanitefactory/naneat?status.svg)](https://godoc.org/github.com/nanitefactory/naneat)
+[![Build Status](https://travis-ci.org/NaniteFactory/naneat.svg?branch=master)](https://travis-ci.org/NaniteFactory/naneat)
 
 ![삿대질](./stuff/omae.jpg)
 
