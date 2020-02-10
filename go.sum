@@ -63,8 +63,8 @@ github.com/mattn/go-runewidth v0.0.8/go.mod h1:H031xJmbD/WCDINGzjvQ9THkh0rPKHF+m
 github.com/mewkiz/flac v1.0.5/go.mod h1:EHZNU32dMF6alpurYyKHDLYpW1lYpBZ5WrXi/VuNIGs=
 github.com/nanitefactory/bindat v0.0.0-20190406111749-b480cdb7ccef h1:b1HT6nJyNFLdvpS1JFlHkAsXxWI8csP/cGwqcGr1mNo=
 github.com/nanitefactory/bindat v0.0.0-20190406111749-b480cdb7ccef/go.mod h1:ntJ6mEVXe9r2AjgsZ3suGgQJ7bi5tgveqC7b6R66Qvw=
-github.com/nanitefactory/visual v0.0.0-20190425074316-4fc0559eb753 h1:GlW8ODI0zBogAXxO9xfHmE+BinsWyUbi0HEVtWsNQr0=
-github.com/nanitefactory/visual v0.0.0-20190425074316-4fc0559eb753/go.mod h1:IkDQyHH4z6WVCa6XRHZ+9MK/h/IRyZ/2rPOt62XoeDQ=
+github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943 h1:bNuiC3IdQoS9PlEn4v84PTtJB4oFZL/u4ell1e3oIAM=
+github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943/go.mod h1:IkDQyHH4z6WVCa6XRHZ+9MK/h/IRyZ/2rPOt62XoeDQ=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=

@@ -17,7 +17,7 @@ require (
 	github.com/gotk3/gotk3 v0.0.0-20200129211157-69caac910e50 // indirect
 	github.com/mattn/go-runewidth v0.0.8 // indirect
 	github.com/nanitefactory/bindat v0.0.0-20190406111749-b480cdb7ccef // indirect
-	github.com/nanitefactory/visual v0.0.0-20190425074316-4fc0559eb753
+	github.com/nanitefactory/visual v0.0.0-20200210165052-adc8ea24d943
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sqweek/dialog v0.0.0-20190728103509-6254ed5b0d3c
 	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
